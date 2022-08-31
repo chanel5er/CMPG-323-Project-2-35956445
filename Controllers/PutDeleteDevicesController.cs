@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,41 +11,20 @@ namespace API_Project2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DevicesController : ControllerBase
+    public class PutDeleteDevicesController : ControllerBase
     {
         private readonly ConnectedOfficeContext _context;
 
-        public DevicesController(ConnectedOfficeContext context)
+        public PutDeleteDevicesController(ConnectedOfficeContext context)
         {
             _context = context;
-        }
-
-        // GET: api/Devices
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Device>>> GetDevice()
-        {
-            return await _context.Device.ToListAsync();
-        }
-
-        // GET: api/Devices/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Device>> GetDevice(Guid id)
-        {
-            var device = await _context.Device.FindAsync(id);
-
-            if (device == null)
-            {
-                return NotFound();
-            }
-
-            return device;
         }
 
         // PUT: api/Devices/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDevice(Guid id, Device device)
+        public async Task<IActionResult> PutDevice(Guid id, DeviceModel device)
         {
             if (id != device.DeviceId)
             {
@@ -73,35 +52,9 @@ namespace API_Project2.Controllers
             return NoContent();
         }
 
-        // POST: api/Devices
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Device>> PostDevice(Device device)
-        {
-            _context.Device.Add(device);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (DeviceExists(device.DeviceId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetDevice", new { id = device.DeviceId }, device);
-        }
-
         // DELETE: api/Devices/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Device>> DeleteDevice(Guid id)
+        public async Task<ActionResult<DeviceModel>> DeleteDevice(Guid id)
         {
             var device = await _context.Device.FindAsync(id);
             if (device == null)
