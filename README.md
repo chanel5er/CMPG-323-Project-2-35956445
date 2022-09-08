@@ -7,7 +7,7 @@ Users can easily GET, PUT, POST, and DELETE entries on the cloud database.
 GET - Returns all or selected entries.
 PUT - Updates existing entries.
 POST - Creates new entries.
-DELET - Will delete the specified entry.
+DELETE - Will delete the specified entry.
 
 Users can enter the values for the devices, zones, and catagories to retrieve or update the data. Once the action is created, the api will return the result.
 
