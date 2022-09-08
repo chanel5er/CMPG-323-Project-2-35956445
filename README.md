@@ -9,6 +9,6 @@ PUT - Updates existing entries.
 POST - Creates new entries.
 DELETE - Will delete the specified entry.
 
-Users can enter the values for the devices, zones, and catagories to retrieve or update the data. Once the action is created, the api will return the result.
+Users can enter the values for the devices, zones, and categories to retrieve or update the data. Once the action is created, the api will return the result.
 
-All methods have been implemented for devices, zones, and catagories.
+All methods have been implemented for devices, zones, and categories.
